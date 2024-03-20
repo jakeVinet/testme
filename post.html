@@ -5,15 +5,20 @@
 
    <body style = "font-family: arial, sans-serif" 
       style = "background-color: #E6E6FA">
-	The following may need an action="https://your_URI/post/users" method=POST (for the Form tag)
-	   <br>where the route /post/users is appended to your URI in order to submitt to your app.<p>
+	<!-- The following may need an action="https://your_URI/post/users" method=POST (for the Form tag)
+	   <br>where the route /post/users is appended to your URI in order to submitt to your app.<p> -->
 	
-	<form action="./post/users" method=POST>
-	ID: <input type=text name=id value=id ><br>
-	token: <input type=text name=token value=token ><br>
-	geo: <input type=text name=geo value=geo ><br>
-	<input type=submit name=submit value=Send><p>
+	<form action="./get/users" method=GET>
+	username: <input type=text name=username  ><br>
+	password: <input type=text name=password  ><br>
+	<input type=submit name=submit value=Login><p>
 	</form>
+
+	<form action="./post/users" method=POST>
+		username: <input type=text name=username  ><br>
+		password: <input type=text name=password  ><br>
+		<input type=submit name=submit value=Register><p>
+		</form>
 
    </body>
 </html>
