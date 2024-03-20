@@ -40,7 +40,7 @@ app.get('/', (req, res)=>{
 });
 
 
-//register function (working)
+//T2 register function (working)
 app.post('/post/users', function(req, res) {
   const formBody= req.body;
   const client = new MongoClient(uri);
@@ -72,7 +72,7 @@ app.post('/post/users', function(req, res) {
   run().catch(console.dir);
 });
 
-//login function (working)
+//T3 login function (working)
 app.get('/get/users', function(req,res){
     const myquery= req.query;
   
@@ -90,10 +90,13 @@ app.get('/get/users', function(req,res){
     
         const user = await users.findOne(query);
         console.log(user);
+
+        //T3.1 unsuccessful login
         if(user === null){
           res.send(output("User not found"));
         }
 
+        //T3.2 successful login
         else if(user.Password === myquery['password']){
           const session = uuidv4();
           res.cookie('authentication', session, {maxAge:60000});
@@ -108,7 +111,7 @@ app.get('/get/users', function(req,res){
     run().catch(console.dir);
 });
 
-//sets the navigation buttons for each page (working)
+//T4 sets the navigation buttons for each page (working)
 function output(message){
   return message +`<br> 
             <form action=\"/report\" method=GET> 
@@ -122,7 +125,7 @@ function output(message){
             </form>`;
 }
 
-// Clear a specific cookie (working)
+//T5 Clear a specific cookie (working)
 app.get('/clearcookie/:cookiename', function (req, res) {
   res.clearCookie(req.params.cookiename); //Shortcut for setting expiration in the past
   res.send(output(`Cookie deleted: \"` + req.params.cookiename+'\"' ));
