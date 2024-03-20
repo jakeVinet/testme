@@ -102,6 +102,9 @@ app.get('/get/users', function(req,res){
           res.cookie('authentication', session, {maxAge:60000});
           res.send(output("You are logged in!"));
         }
+        else{
+          res.send(output("Password Incorrect"));
+        }
     
       } finally {
         // Ensures that the client will close when you finish/error
